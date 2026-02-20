@@ -41,4 +41,14 @@ void loop() {
             Serial.print(targetAngle);
             Serial.println(" degrees");
         }
+      else {
+            // Print error message
+            Serial.println("Error: Invalid angle. Enter value between 0 and 180.");
+        }
+
+        // Clear any remaining serial buffer
+        while (Serial.available() > 0) {
+            Serial.read();
+        }
+    }
 }

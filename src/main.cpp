@@ -24,5 +24,21 @@ void setup() {
 
 
 void loop() {
-// write your code here
+  // Check if Serial data is available
+    if (Serial.available() > 0) {
+
+        // Read integer angle input from Serial
+        targetAngle = Serial.parseInt();
+
+        // Validate angle range (0–180)
+        if (targetAngle >= 0 && targetAngle <= 180) {
+
+            // Move servo
+            axisServo.write(targetAngle);
+
+            // Print confirmation message
+            Serial.print("Servo moved to: ");
+            Serial.print(targetAngle);
+            Serial.println(" degrees");
+        }
 }
